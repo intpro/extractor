@@ -229,6 +229,15 @@ class QueryBuilder
     }
 
     /**
+     * @param  array  $columns
+     * @return array|static[]
+     */
+    public function count()
+    {
+        return $this->builder->count();
+    }
+
+    /**
      * @param  array|mixed  $column
      * @return $this
      */

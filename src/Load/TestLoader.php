@@ -26,6 +26,18 @@ class TestLoader implements LoaderInterface
     private $selections = [];
     private $items = [];
     private $blocks = [];
+    private $capMapper;
+
+    /**
+     * @param \Interpro\Core\Contracts\Taxonomy\Types\GroupType $type
+     * @param string $selection_name
+     *
+     * @return int
+     */
+    public function countGroup($type, $selection_name)
+    {
+        return 0;
+    }
 
     private function addOwn(AItem $owner, OwnField $ownMeta, $own_val)
     {
@@ -50,6 +62,8 @@ class TestLoader implements LoaderInterface
         $owner->setOwn($newField);
         $owner->setField($newField);
 
+        $this->capMapper = $capMapper = new CapAMapper();
+
         //Создаение полей пока без значений $own_val
     }
 
@@ -59,11 +73,9 @@ class TestLoader implements LoaderInterface
 
         if($type->getMode() === TypeMode::MODE_A)
         {
-            $newField = new AARefField($owner, $refMeta);
-
             $aRef = new ARef($type, $ref_id);
 
-            $newField->setRef($aRef);
+            $newField = new AARefField($owner, $refMeta, $aRef, $this->capMapper);
         }
         else
         {

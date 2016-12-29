@@ -13,6 +13,7 @@ class Loader implements LoaderInterface
     private $mappersMediator;
     private $tuner;
     private $selections = [];
+    private $counts = [];
 
     /**
      * @param \Interpro\Extractor\Contracts\Db\MappersMediator $mappersMediator
@@ -84,6 +85,29 @@ class Loader implements LoaderInterface
     }
 
     /**
+     * @param \Interpro\Core\Contracts\Taxonomy\Types\GroupType $type
+     * @param string $selection_name
+     *
+     * @return int
+     */
+    public function countGroup($type, $selection_name)
+    {
+        $group_name = $type->getName();
+        $key = $group_name.'_'.$selection_name;
+
+        if(!array_key_exists($key, $this->counts))
+        {
+            $family = $type->getFamily();
+            $Amapper = $this->mappersMediator->getAMapper($family);
+            $selectionUnit = $this->tuner->getSelection($group_name, $selection_name);
+            $count_val = $Amapper->count($selectionUnit);
+            $this->counts[$key] = $count_val;
+        }
+
+        return $this->counts[$key];
+    }
+
+    /**
      * @param \Interpro\Core\Contracts\Ref\ARef $ref
      * @param bool $asUnitMember
      *
@@ -104,6 +128,7 @@ class Loader implements LoaderInterface
     {
         $this->selections = [];
         $this->mappersMediator->reset();
+        $this->counts = [];
     }
 
 }

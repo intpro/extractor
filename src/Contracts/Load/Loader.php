@@ -25,6 +25,14 @@ interface Loader
     public function loadGroupCollection($type, $selection_name);
 
     /**
+     * @param \Interpro\Core\Contracts\Taxonomy\Types\GroupType $type
+     * @param string $selection_name
+     *
+     * @return int
+     */
+    public function countGroup($type, $selection_name);
+
+    /**
      * @param \Interpro\Core\Contracts\Ref\ARef $ref
      * @param bool $asUnitMember
      *
