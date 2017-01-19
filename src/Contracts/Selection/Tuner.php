@@ -12,7 +12,7 @@ interface Tuner
      *
      * @return \Interpro\Extractor\Contracts\Selection\SelectionUnit $selUnit
      */
-    public function initSelection(GroupType $type, $name);
+    public function initSelection(GroupType $type, $name = 'group');
 
     /**
      * @param string $group_name
@@ -20,7 +20,7 @@ interface Tuner
      *
      * @return \Interpro\Extractor\Contracts\Selection\SelectionUnit $selUnit
      */
-    public function getSelection($group_name, $name);
+    public function getSelection($group_name, $name = 'group');
 
     /**
      * @param string $group_name
@@ -28,5 +28,5 @@ interface Tuner
      *
      * @return bool
      */
-    public function selectionExist($group_name, $name);
+    public function selectionExist($group_name, $name = 'group');
 }

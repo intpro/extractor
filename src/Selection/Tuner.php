@@ -23,7 +23,7 @@ class Tuner implements TunerInterface
      *
      * @return \Interpro\Extractor\Contracts\Selection\SelectionUnit $selUnit
      */
-    public function initSelection(GroupType $type, $name)
+    public function initSelection(GroupType $type, $name = 'group')
     {
         $group_name = $type->getName();
 
@@ -54,7 +54,7 @@ class Tuner implements TunerInterface
      *
      * @return \Interpro\Extractor\Contracts\Selection\SelectionUnit $selUnit
      */
-    public function getSelection($group_name, $name)
+    public function getSelection($group_name, $name = 'group')
     {
         if(!array_key_exists($group_name, $this->units))
         {
@@ -75,7 +75,7 @@ class Tuner implements TunerInterface
      *
      * @return bool
      */
-    public function selectionExist($group_name, $name)
+    public function selectionExist($group_name, $name = 'group')
     {
         if(!array_key_exists($group_name, $this->units))
         {

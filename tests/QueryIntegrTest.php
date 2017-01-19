@@ -74,7 +74,7 @@ class QueryIntegrTest extends TestCase
         }
         catch(\Exception $e)
         {
-            $this->assertTrue(false);
+            $this->assertTrue(false, $e->getMessage());
         }
 
         $this->assertTrue(true);
