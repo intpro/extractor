@@ -49,4 +49,21 @@ class CItem implements COwnItem
         return $this->cap;
     }
 
+    /**
+     * @param string $req_name
+     *
+     * @return mixed
+     */
+    public function __get($req_name)
+    {
+        if($req_name === 'value')
+        {
+            return $this->value;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
 }
