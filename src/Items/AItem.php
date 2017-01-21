@@ -229,6 +229,10 @@ abstract class AItem implements AItemInterface
             {
                 return $this->getRef($name);
             }
+            elseif($suffix === 'item')
+            {
+                return $this->getField($name)->getItem();
+            }
         }
         else
         {
