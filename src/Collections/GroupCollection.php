@@ -65,4 +65,21 @@ class GroupCollection extends NamedCollection implements GroupCollectionInterfac
     {
         throw new ExtractorException('Не найден элемент группы '.$this->getName().' по '.$name.'!');
     }
+
+    /**
+     * @param string $req_name
+     *
+     * @return mixed
+     */
+    public function __get($req_name)
+    {
+        if($req_name === 'name')
+        {
+            return $this->getName();
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

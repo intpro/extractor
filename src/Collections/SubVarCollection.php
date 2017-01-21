@@ -3,6 +3,7 @@
 namespace Interpro\Extractor\Collections;
 
 use Interpro\Core\Contracts\Ref\ARef;
+use Interpro\Core\Iterator\FieldIterator;
 use Interpro\Extractor\Contracts\Creation\CollectionFactory;
 use Interpro\Extractor\Exception\ExtractorException;
 use Interpro\Extractor\Contracts\Collections\SubVarCollection as SubVarCollectionInterface;
@@ -103,6 +104,11 @@ class SubVarCollection implements SubVarCollectionInterface
     {
         //throw new ExtractorException('Не найдена коллекция коллекций элементов групп подчиненная текущему элементу группы типа '.$this->ref->getType()->getName().' по имени ссылки '.$name.'!');
         return $this->collectionFactory->createCollectionSet($this->ref, $name); //Возвращаем пустышку
+    }
+
+    public function sortBy($path, $sort = 'ASC')
+    {
+        return new FieldIterator($this, $path, $sort);
     }
 
 }

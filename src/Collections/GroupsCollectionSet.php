@@ -2,6 +2,7 @@
 
 namespace Interpro\Extractor\Collections;
 
+use Interpro\Core\Iterator\FieldIterator;
 use Interpro\Extractor\Contracts\Load\Loader;
 use Interpro\Extractor\Contracts\Collections\GroupsCollectionSet as GroupsCollectionSetInterface;
 use Interpro\Extractor\Contracts\Collections\RefFilter as RefFilterInterface;
@@ -113,5 +114,27 @@ class GroupsCollectionSet implements GroupsCollectionSetInterface
     protected function notFoundAction($name)
     {
         throw new ExtractorException('Не найдена коллекция элементов группы по имени '.$name.', подчиненная владельцу типа '.$this->refFilter->getTypeName().' по ссылке '.$this->refFilter->getName().'!');
+    }
+
+    public function sortBy($path, $sort = 'ASC')
+    {
+        return new FieldIterator($this, $path, $sort);
+    }
+
+    /**
+     * @param string $req_name
+     *
+     * @return mixed
+     */
+    public function __get($req_name)
+    {
+        if($req_name === 'name')
+        {
+            return $this->getName();
+        }
+        else
+        {
+            return null;
+        }
     }
 }
