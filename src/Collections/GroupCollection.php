@@ -35,7 +35,7 @@ class GroupCollection extends NamedCollection implements GroupCollectionInterfac
      */
     public function getItem($id)
     {
-        parent::getByName('id_'.$id);
+        return parent::getByName('id_'.$id);
     }
 
     /**
