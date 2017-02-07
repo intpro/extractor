@@ -14,7 +14,7 @@ class ExtractorServiceProvider extends ServiceProvider
      */
     public function boot(Dispatcher $dispatcher)
     {
-        Log::info('Загрузка ExtractorServiceProvider');
+        //Log::info('Загрузка ExtractorServiceProvider');
     }
 
     /**
@@ -22,7 +22,7 @@ class ExtractorServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Log::info('Регистрация ExtractorServiceProvider');
+        //Log::info('Регистрация ExtractorServiceProvider');
 
         $this->app->singleton(
             'Interpro\Extractor\Contracts\Db\JoinMediator',
