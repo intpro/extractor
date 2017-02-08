@@ -3,7 +3,9 @@
 namespace Interpro\Extractor\Collections;
 
 use Interpro\Core\Contracts\Ref\ARef;
+use Interpro\Core\Enum\OddEven;
 use Interpro\Core\Iterator\FieldIterator;
+use Interpro\Core\Iterator\OddEvenIterator;
 use Interpro\Extractor\Contracts\Creation\CollectionFactory;
 use Interpro\Extractor\Exception\ExtractorException;
 use Interpro\Extractor\Contracts\Collections\SubVarCollection as SubVarCollectionInterface;
@@ -109,6 +111,18 @@ class SubVarCollection implements SubVarCollectionInterface
     public function sortBy($path, $sort = 'ASC')
     {
         return new FieldIterator($this, $path, $sort);
+    }
+
+    public function odd()
+    {
+        //Заглушка чет-нечет для этой коллекции не нужен, пусть возвращает имена
+        return new OddEvenIterator($this->item_names, OddEven::ODD);
+    }
+
+    public function even()
+    {
+        //Заглушка чет-нечет для этой коллекции не нужен, пусть возвращает имена
+        return new OddEvenIterator($this->item_names, OddEven::EVEN);
     }
 
 }
