@@ -4,17 +4,17 @@ namespace Interpro\Extractor\Test;
 
 use Interpro\Extractor\Load\TestLoader;
 
-class CollectionsHierarchyTest extends \PHPUnit_Framework_TestCase
+class CollectionsHierarchyTest extends \PHPUnit\Framework\TestCase
 {
     use TaxonomyTrait;
     use TestCaseTrait;
-    
+
     private $taxonomy;
     private $loader;
     private $case;
     private $case_hash;
 
-    public function setUp()
+    public function setUp(): void
     {
         //составлен из id групп
         $this->case_hash = '1(10(100(33),),20(200(33),),),2(30(300(22),),40(400(22),),),3(50(500(22),600(11),),60(700(22),),),';

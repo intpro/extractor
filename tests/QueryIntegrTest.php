@@ -39,7 +39,7 @@ class QueryIntegrTest extends TestCase
         return $app;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->createApplication();
 

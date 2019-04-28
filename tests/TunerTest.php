@@ -6,11 +6,11 @@ use Interpro\Core\Taxonomy\Types\GroupType;
 use Interpro\Extractor\Selection\Tuner;
 use Mockery as m;
 
-class TunerTest extends \PHPUnit_Framework_TestCase
+class TunerTest extends \PHPUnit\Framework\TestCase
 {
     private $selectionUnit;
 
-    public function tearDown()
+    public function tearDown(): void
     {
         m::close();
     }
@@ -20,7 +20,7 @@ class TunerTest extends \PHPUnit_Framework_TestCase
         return m::mock('Interpro\Extractor\Db\QueryBuilder');
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $tuner = new Tuner();
         $atype = new GroupType('group1', 'qsaggr');

@@ -1,9 +1,9 @@
 {
     "name": "interpro/extractor",
     "description": "Получение данных в агрегированном виде",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "require": {
-        "interpro/core": "1.1.*"
+        "interpro/core": "^1.1.0"
     },
     "keywords": [
         "extractor"
